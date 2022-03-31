@@ -13,6 +13,5 @@ namespace HackMan
     {
         protected enum direction { up, down, left, right };
         protected direction movingDirection;
-
     }
 }
