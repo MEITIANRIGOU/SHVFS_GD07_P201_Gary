@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using HackMan;
 
 namespace HackMan
 {
-    
     public class LevelSystem : MonoBehaviour
     {
         public GameObject[] baseGridObjects;
-        int[,] level = new int[,]
+
+        public static int[,] level = new int[,]
         {
             {1,1,1,1,1,1,1,1,1,1},
             {1,2,0,0,0,0,3,0,0,1},
@@ -35,7 +36,7 @@ namespace HackMan
                 {
                     transform.position = new Vector3(j, -i, 0);
                     GameObject generatedObject = Instantiate(baseGridObjects[level[i, j]], transform.position, baseGridObjects[level[i, j]].transform.rotation);
-                    generatedObject.GetComponent<BaseGridObject>().gridPosition = new Vector2Int(j, -i);
+                    generatedObject.GetComponent<BaseGridObject>().gridPosition = new Vector3(j, -i, 0);
                 }
             }
         }
