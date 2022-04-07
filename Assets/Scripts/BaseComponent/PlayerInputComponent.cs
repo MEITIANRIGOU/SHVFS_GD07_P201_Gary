@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using HackMan;
 
-public class Player : BaseGridMovement
+public class PlayerInputComponent : MovementComponent
 {
     private void Awake()
     {

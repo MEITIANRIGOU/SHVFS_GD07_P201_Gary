@@ -10,6 +10,8 @@ namespace HackMan
     {
         public GameObject[] baseGridObjects;
 
+        public static 
+
         public static int[,] level = new int[,]
         {
             {1,1,1,1,1,1,1,1,1,1},

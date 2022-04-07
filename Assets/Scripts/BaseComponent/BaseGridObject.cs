@@ -12,7 +12,7 @@ namespace HackMan
         protected ObjectType objectType;
         public Vector3 gridPosition;
     }
-    public class BaseGridMovement : BaseGridObject
+    public class MovementComponent : BaseGridObject
     {
         protected float timer = 0;
         public enum Direction { up, down, left, right };

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using HackMan;
 
-public class Ghost: BaseGridMovement
+public class EnemyInputComponent: MovementComponent
 {
     private void Awake()
     {
