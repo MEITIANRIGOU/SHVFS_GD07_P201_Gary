@@ -6,21 +6,7 @@ using HackMan;
 
 public class EnemyInputComponent: MovementComponent
 {
-    private void Awake()
-    {
-        objectType = ObjectType.ghost;
-        //LevelSystem.levelGrids.Add((int)objectType, gridPosition);
-    }
     protected override void Update()
-    {
-        base.Update();
-        if (timer == 0)
-        {
-            ChangeTargetPosition(movingDirection);
-
-        }
-    }
-    void CheckTargetPosition()
     {
 
     }

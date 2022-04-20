@@ -10,8 +10,6 @@ namespace HackMan
     {
         public GameObject[] baseGridObjects;
 
-        public static 
-
         public static int[,] level = new int[,]
         {
             {1,1,1,1,1,1,1,1,1,1},
@@ -38,7 +36,7 @@ namespace HackMan
                 {
                     transform.position = new Vector3(j, -i, 0);
                     GameObject generatedObject = Instantiate(baseGridObjects[level[i, j]], transform.position, baseGridObjects[level[i, j]].transform.rotation);
-                    generatedObject.GetComponent<BaseGridObject>().gridPosition = new Vector3(j, -i, 0);
+                    generatedObject.GetComponent<BaseGridObject>().gridPosition = new Vector3Int(j, -i, 0);
                 }
             }
         }

@@ -8,49 +8,28 @@ namespace HackMan
 {
     public class BaseGridObject : MonoBehaviour
     {
-        protected enum ObjectType { pill, wall, hackMan, ghost}
-        protected ObjectType objectType;
-        public Vector3 gridPosition;
+        public Vector3Int gridPosition;
     }
     public class MovementComponent : BaseGridObject
     {
-        protected float timer = 0;
-        public enum Direction { up, down, left, right };
-        public Direction movingDirection;
-        public Direction pastDirection;
+        protected float progressTarget;
 
-        public Vector3 targetPosition;
+        public Vector3Int movingDirection;
+        public Vector3Int pastDirection;
+
+        public Vector3Int targetPosition;
 
         protected virtual void Update()
         {
-            timer += Time.deltaTime;
-            if (timer >= 1)
+            if (transform.position == targetPosition)
             {
-                timer = 0;
+                progressTarget = 0;
+                gridPosition = targetPosition;
             }
-        }
-        protected void ChangeTargetPosition(Direction movingDirection)
-        {
-            switch (movingDirection)
+            if (gridPosition == targetPosition && !(gridPosition + movingDirection).IsWall())
             {
-                case Direction.up:
-                    targetPosition = gridPosition + Vector3.up;
-                    break;
-                case Direction.down:
-                    targetPosition = gridPosition + Vector3.down;
-                    break;
-                case Direction.left:
-                    targetPosition = gridPosition + Vector3.left;
-                    break;
-                case Direction.right:
-                    targetPosition = gridPosition + Vector3.right;
-                    break;
+                targetPosition += movingDirection;
             }
-        }
-        protected void Move()
-        {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, timer);
-            gridPosition = targetPosition;
         }
     }
 }
