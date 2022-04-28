@@ -1,12 +1,13 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using HackMan;
+using HackMan.Scripts;
 
 namespace HackMan
 {
-    public class LevelSystem : MonoBehaviour
+    public class LevelSystem : Singleton<LevelSystem>
     {
         public GameObject[] baseGridObjects;
 
@@ -24,7 +25,7 @@ namespace HackMan
             {1,1,1,1,1,1,1,1,1,1},
         };
         //0:pills 1:wall 2:HackMan 3:Ghost
-        private void Start()
+        protected override void Awake()
         {
             GenerateLevel();
         }
@@ -39,6 +40,10 @@ namespace HackMan
                     generatedObject.GetComponent<BaseGridObject>().gridPosition = new Vector3Int(j, -i, 0);
                 }
             }
+        }
+        public int GetCollectionAmount()
+        {
+            return level.Cast<int>().Count(baseGrid => baseGrid == 0);
         }
     }
 }

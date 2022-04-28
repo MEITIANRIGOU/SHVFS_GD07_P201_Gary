@@ -17,4 +17,8 @@ public static class ExtensionMethods
     {
         return LevelSystem.level[Mathf.Abs(vector3.y), Mathf.Abs(vector3.x)] == 1;
     }
+    public static bool IsWall(this Vector3 vector3)
+    {
+        return LevelSystem.level[(int)Mathf.Abs(vector3.y), (int)Mathf.Abs(vector3.x)] == 1;
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using HackMan;
 
 public class PlayerInputComponent : MovementComponent
@@ -31,6 +32,22 @@ public class PlayerInputComponent : MovementComponent
         if (Input.GetKeyDown(KeyCode.D))
         {
             movingDirection = Vector3Int.right;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Pill>() != null)
+        {
+            Destroy(other.gameObject);
+            if (FindObjectsOfType<Pill>().Length == 0)
+            {
+
+                SceneManager.LoadScene("Game");
+            }
+        }
+        else if (other.gameObject.GetComponent<EnemyInputComponent>() != null)
+        {
+            SceneManager.LoadScene("Game");
         }
     }
 }
